@@ -737,7 +737,7 @@ TextureImporter:
         serializedVersion: 2
         x: 11
         y: 0
-        width: 32
+        width: 51
         height: 43
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -758,7 +758,7 @@ TextureImporter:
         serializedVersion: 2
         x: 76
         y: 0
-        width: 32
+        width: 51
         height: 41
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -779,7 +779,7 @@ TextureImporter:
         serializedVersion: 2
         x: 140
         y: 0
-        width: 33
+        width: 51
         height: 39
       alignment: 7
       pivot: {x: 0.5, y: 0}

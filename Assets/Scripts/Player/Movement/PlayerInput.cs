@@ -11,7 +11,7 @@ namespace player.Inputs
         private float horizontalDirection;
         private bool jumpPressed;
 
-        private void Awake()
+        private void Start()
         {
             playerMovement = GetComponent<PlayerMovement>();
             shooter = GetComponent<Shooter>();

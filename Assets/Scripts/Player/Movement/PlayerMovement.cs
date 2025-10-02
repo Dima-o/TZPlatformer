@@ -26,21 +26,25 @@ namespace player.Inputs
 
         public bool LookDirection => spriteRenderer.flipX;
 
-        private void Update()
+        private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animSetup = GetComponent<PlayerAnimationsSetup>();
 
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
             activeMove = true;
+        }
+
+        private void Update()
+        {
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
         }
 
         public void Move(float direction, bool isJumpButtonPressed)
         {
             if (!activeMove) return;
 
-            float verticalSpeed = rb.velocity.y;
+            var verticalSpeed = rb.velocity.y;
 
             if (!isGrounded)
             {
@@ -62,7 +66,7 @@ namespace player.Inputs
             }
             else
             {
-                animSetup.AnimOffRun();
+                animSetup.AnimOnOffRun(false);
             }
         }
 
@@ -76,16 +80,7 @@ namespace player.Inputs
 
         private void HorizontalMovement(float direction)
         {
-            if (isGrounded)
-            {
-                animSetup.AnimOnRun();
-
-            }
-            else
-            {
-                animSetup.AnimOffRun();
-
-            }
+            animSetup.AnimOnOffRun(isGrounded);
 
             desiredVelocity = curve.Evaluate(direction);
 
@@ -106,7 +101,7 @@ namespace player.Inputs
             }
         }
 
-        public void FreezingMove(bool active)
+        public void IsActiveMove(bool active)
         {
             activeMove = active;
         }

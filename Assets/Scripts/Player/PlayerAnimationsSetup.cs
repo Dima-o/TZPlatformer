@@ -25,19 +25,13 @@ public class PlayerAnimationsSetup : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
     }
 
-    public void AnimDeath(string anim)
+    public void AnimDeath()
     {
-        animator.SetBool("activeRun", false);
-        animator.SetBool(anim, true);     
+        animator.SetTrigger("activeDeath");
     }
 
-    public void AnimOnRun()
+    public void AnimOnOffRun(bool active)
     {
-        animator.SetBool("activeRun", true);
-    }
-
-    public void AnimOffRun()
-    {
-        animator.SetBool("activeRun", false);
+        animator.SetBool("activeRun", active);
     }
 }
