@@ -3,6 +3,17 @@ using UnityEngine;
 public class HealthPlayer : Health
 {
     [SerializeField] private DeathPlayer deathPlayer;
+    [SerializeField] private AudioSource audioDamage;
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (!audioDamage.isPlaying)
+        {
+            audioDamage.Play();
+        }
+    }
+
     protected override void Die()
     {
         base.Die();

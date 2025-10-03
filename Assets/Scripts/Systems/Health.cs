@@ -1,22 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class Health : MonoBehaviour
 {
-    [Header("Health Settings")]
     [SerializeField] private TMP_Text textHealth;
     [SerializeField] private Image LinerBar;
-    public float maxHealth = 100f;
+    [SerializeField] private float maxHealth = 100f;
     
-    private float _damage;
     public bool IsAlive => maxHealth > 0;
 
     private float _realTextHealth;
-
-
 
     private void Update()
     {
@@ -31,10 +25,9 @@ public class Health : MonoBehaviour
         textHealth.text = _realTextHealth.ToString();
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         maxHealth -= damage;
-        _damage = damage;
         LinerBar.fillAmount = maxHealth / 100;
 
         if (maxHealth <= 0)
@@ -45,7 +38,6 @@ public class Health : MonoBehaviour
 
     protected virtual void Die()
     {
-
 
     }
 }

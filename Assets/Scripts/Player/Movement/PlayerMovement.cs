@@ -17,6 +17,9 @@ namespace player.Inputs
         [SerializeField] private float maxAcceleration;
         [SerializeField] private float minAirAcceleration;
 
+        [Header("Audio")]
+        [SerializeField] private AudioSource audioJump;
+
         private SpriteRenderer spriteRenderer;
         private Rigidbody2D rb;
         private PlayerAnimationsSetup animSetup;
@@ -74,6 +77,7 @@ namespace player.Inputs
         {
             if (isGrounded)
             {
+                audioJump.Play();
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
         }

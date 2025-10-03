@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace player.Inputs
 {
@@ -26,7 +27,7 @@ namespace player.Inputs
                 jumpPressed = true;
             }
 
-            if (Input.GetButtonDown(GloballStringVars.fire1))
+            if (Input.GetButtonDown(GloballStringVars.fire1) && !EventSystem.current.IsPointerOverGameObject())
             {
                 shooter.StartAnimation();
             }

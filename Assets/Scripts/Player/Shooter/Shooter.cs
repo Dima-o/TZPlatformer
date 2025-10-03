@@ -1,6 +1,5 @@
 using player.Inputs;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour
 {
@@ -13,19 +12,17 @@ public class Shooter : MonoBehaviour
     [Header("Angle Control")]
     [SerializeField] private float currentAngle;
 
-    //[HideInInspector] public float fireRate;
-    //[HideInInspector] public int arrowDamage;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioArchery;
 
     private PlayerMovement playerMovement;
-    private GameObject _currentBullet;
-    private Rigidbody2D _currentBulletVelocity;
+    private GameObject currentBullet;
+    private Rigidbody2D currentBulletVelocity;
     private PlayerAnimationsSetup animSetup;
 
     private float firePointPositionX;
     private float firePointPositionY;
     private float initialFirePointPositionX;
-
-    private bool _activeShoot = true;
 
     private void Start()
     {
@@ -43,65 +40,51 @@ public class Shooter : MonoBehaviour
 
     public void Shoot()
     {
-        if (_activeShoot)
+        if (playerMovement.LookDirection)
+        {
+            firePointPositionX = -initialFirePointPositionX;
+            spriteRendererArrow.flipX = true;
+        }
+        else
+        {
+            firePointPositionX = initialFirePointPositionX;
+            spriteRendererArrow.flipX = false;
+        }
+
+        firePoint.localPosition = new Vector2(firePointPositionX, firePointPositionY);
+
+        currentBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
+        audioArchery.Play();
+
+        currentBulletVelocity = currentBullet.GetComponent<Rigidbody2D>();
+
+        if (currentBulletVelocity != null)
         {
             if (playerMovement.LookDirection)
             {
-                firePointPositionX = -initialFirePointPositionX;
-                spriteRendererArrow.flipX = true;
+                DirectionShootSpeed(-fireSpeed, -currentAngle);
             }
             else
             {
-                firePointPositionX = initialFirePointPositionX;
-                spriteRendererArrow.flipX = false;
+                DirectionShootSpeed(fireSpeed, currentAngle);
             }
-
-            firePoint.localPosition = new Vector2(firePointPositionX, firePointPositionY);
-
-            //if (health.IsAlive)
-            _currentBullet = Instantiate(bullet, firePoint.position, Quaternion.identity);
-            //_currentBullet.GetComponent<DamageEnemy>().damage = arrowDamage;
-
-            
-            // Задаем скорость пули
-            _currentBulletVelocity = _currentBullet.GetComponent<Rigidbody2D>();
-
-            if (_currentBulletVelocity != null)
-            {
-                if (playerMovement.LookDirection)
-                {
-                    DirectionShootSpeed(-fireSpeed, -currentAngle);
-                }
-                else
-                {
-                    DirectionShootSpeed(fireSpeed, currentAngle);
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Bullet prefab has no Rigidbody2D component!");
-            }
-
-            //_activeShoot = false;
+        }
+        else
+        {
+            Debug.LogWarning("Bullet prefab has no Rigidbody2D component!");
         }
     }
 
     private void DirectionShootSpeed(float _fireSpeed, float angle)
     {
-        _currentBulletVelocity.gravityScale = 1f;
+        currentBulletVelocity.gravityScale = 1f;
 
-        // Рассчитываем скорость по углу
         float radAngle = angle * Mathf.Deg2Rad;
         Vector2 velocity = new Vector2(
             Mathf.Cos(radAngle) * _fireSpeed,
             Mathf.Sin(radAngle) * _fireSpeed
         );
 
-        _currentBulletVelocity.velocity = velocity;
-    }
-
-    public void IsActiveShoot(bool _active)
-    {
-        _activeShoot = _active;
+        currentBulletVelocity.velocity = velocity;
     }
 }

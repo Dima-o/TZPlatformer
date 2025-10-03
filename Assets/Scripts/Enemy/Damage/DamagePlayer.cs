@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class DamagePlayer : Damage
 {
-    protected override string TargetTag => "DamagePlayer";
-
     [SerializeField] private float attackCooldown;
     [SerializeField] private float knockbackForce;
     [SerializeField] private float knockbackUpward;
     [SerializeField] private float stunDuration;
+
+    protected override string TargetTag => "Player";
 
     private float lastAttackTime;
 

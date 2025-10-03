@@ -4,6 +4,9 @@ using UnityEngine;
 public class DeathPlayer : MonoBehaviour
 {
     [SerializeField] private PlayerAnimationsSetup animSetup;
+    [SerializeField] private GameObject menuDefeat;
+    [SerializeField] private AudioSource audioBackground;
+    [SerializeField] private AudioSource audioDefeat;
     [SerializeField] private float timeDeath;
 
     private PlayerMovement playerMovement;
@@ -37,6 +40,9 @@ public class DeathPlayer : MonoBehaviour
 
     public void TheEndGame()
     {
+        menuDefeat.SetActive(true);
+        audioBackground.Stop();
+        audioDefeat.Play();
         Time.timeScale = 0; 
     }
 }
