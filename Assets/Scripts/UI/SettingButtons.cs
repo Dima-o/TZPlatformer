@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -69,6 +68,6 @@ public class SettingButtons : MonoBehaviour
     IEnumerator ExitTheGame(float time)
     {
         yield return new WaitForSeconds(time);
-        EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 }
