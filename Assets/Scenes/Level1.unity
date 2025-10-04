@@ -4153,6 +4153,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1740013501112615721, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740013501112615721, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740013501112615721, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740013501112615721, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302376043289799245, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.76297
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302376043289799245, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.69305027
+      objectReference: {fileID: 0}
     - target: {fileID: 3910307751629371299, guid: a01f9e08c1e25374dbff179fb56a092d, type: 3}
       propertyPath: m_SortingOrder
       value: 1
