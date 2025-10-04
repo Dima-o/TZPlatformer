@@ -5,7 +5,7 @@ public class EnemyControler : MonoBehaviour
     [SerializeField] private SpriteRenderer sp;
     [SerializeField] private float speed, timeToRevert;
 
-    private Health health;
+    private HealthSystem health;
     private EnemyAnimationsSetup animSetup;
     private Rigidbody2D rb;
 
@@ -14,11 +14,12 @@ public class EnemyControler : MonoBehaviour
     private const float revertState = 2;
 
     private float currentState, currentTimeToRevert;
+
     private void Start()
     {
         animSetup = GetComponent<EnemyAnimationsSetup>();
         rb = GetComponent<Rigidbody2D>();
-        health = GetComponent<Health>();
+        health = GetComponent<HealthSystem>();
         currentState = runState;
         currentTimeToRevert = 0;
     }

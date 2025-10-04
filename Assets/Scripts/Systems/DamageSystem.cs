@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Damage : MonoBehaviour
+public abstract class DamageSystem : MonoBehaviour
 {
     [SerializeField] protected float damage = 10f;
 
@@ -10,7 +10,7 @@ public abstract class Damage : MonoBehaviour
     {
         if (collision.CompareTag(TargetTag))
         {
-            Health health = collision.GetComponent<Health>();
+            HealthSystem health = collision.GetComponent<HealthSystem>();
             if (health != null)
             {
                 health.TakeDamage(damage);

@@ -219,7 +219,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5209450560014421913
 MonoBehaviour:
@@ -798,11 +798,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c44adf4998daf6419e4d4710f2b5992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeDeath: 1
   animSetup: {fileID: 8803345016400699249}
   menuDefeat: {fileID: 0}
   audioBackground: {fileID: 0}
   audioDefeat: {fileID: 1563629068408635277}
-  timeDeath: 1
 --- !u!114 &7603334484019332546
 MonoBehaviour:
   m_ObjectHideFlags: 0

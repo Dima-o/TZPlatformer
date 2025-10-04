@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Health : MonoBehaviour
+public abstract class HealthSystem : MonoBehaviour
 {
     [SerializeField] private TMP_Text textHealth;
     [SerializeField] private Image LinerBar;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageEnemy : Damage
+public class DamageEnemy : DamageSystem
 {
     protected override string TargetTag => "DamageEnemy";
 

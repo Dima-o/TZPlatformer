@@ -1,13 +1,11 @@
 using UnityEngine;
 
-public class DeathEnemy : MonoBehaviour
+public class DeathEnemy : DeathSystem
 {
     [SerializeField] private CapsuleCollider2D[] capsuleCollider;
-    [SerializeField] private float timeDeath;
 
     private Rigidbody2D rb;
     private EnemyAnimationsSetup animSetup;
-    private bool isActiveTimerDeath;
 
     private void Start()
     {
@@ -15,31 +13,22 @@ public class DeathEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        if (isActiveTimerDeath)
-        {
-            timeDeath -= Time.deltaTime;
-            if (timeDeath <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    public void Death()
+    protected override void PlayDeathAnimation()
     {
         animSetup.AnimDeath();
-        OffCapsuleCollider();
-        rb.isKinematic = true;
-        isActiveTimerDeath = true;
     }
 
-    private void OffCapsuleCollider()
+    protected override void OnDeathStart()
     {
-        for (int i = 0; i < capsuleCollider.Length; i++)
+        foreach (var col in capsuleCollider)
         {
-            capsuleCollider[i].enabled = false;
+            col.enabled = false;
         }
+        rb.isKinematic = true;
+    }
+
+    protected override void OnDeathEnd()
+    {
+        Destroy(gameObject);
     }
 }

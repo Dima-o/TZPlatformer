@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthEnemy : Health
+public class HealthEnemy : HealthSystem
 {
     [SerializeField] private DeathEnemy deathEnemy;
 

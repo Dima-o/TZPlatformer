@@ -1,48 +1,35 @@
-using player.Inputs;
 using UnityEngine;
+using player.Inputs;
 
-public class DeathPlayer : MonoBehaviour
+public class DeathPlayer : DeathSystem
 {
     [SerializeField] private PlayerAnimationsSetup animSetup;
     [SerializeField] private GameObject menuDefeat;
     [SerializeField] private AudioSource audioBackground;
     [SerializeField] private AudioSource audioDefeat;
-    [SerializeField] private float timeDeath;
 
     private PlayerMovement playerMovement;
-
-    private bool isActiveTimerDeath;
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void Update()
+    protected override void PlayDeathAnimation()
     {
-        if (isActiveTimerDeath)
-        {
-            timeDeath -= Time.deltaTime;
-            if (timeDeath <= 0)
-            {
-                isActiveTimerDeath = false;
-                TheEndGame();
-            }
-        }
+        animSetup.AnimDeath();
     }
 
-    public void Death()
+    protected override void OnDeathStart()
     {
         playerMovement.IsActiveMove(false);
-        animSetup.AnimDeath();
-        isActiveTimerDeath = true;
     }
 
-    public void TheEndGame()
+    protected override void OnDeathEnd()
     {
         menuDefeat.SetActive(true);
         audioBackground.Stop();
         audioDefeat.Play();
-        Time.timeScale = 0; 
+        Time.timeScale = 0;
     }
 }

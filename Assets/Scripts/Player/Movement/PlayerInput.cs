@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace player.Inputs
 {
-    [RequireComponent(typeof(PlayerMovement))]
+
     public class PlayerInput : MonoBehaviour
     {
         private PlayerMovement playerMovement;

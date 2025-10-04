@@ -1,7 +1,7 @@
 using player.Inputs;
 using UnityEngine;
 
-public class DamagePlayer : Damage
+public class DamagePlayer : DamageSystem
 {
     [SerializeField] private float attackCooldown;
     [SerializeField] private float knockbackForce;

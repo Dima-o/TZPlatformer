@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthPlayer : Health
+public class HealthPlayer : HealthSystem
 {
     [SerializeField] private DeathPlayer deathPlayer;
     [SerializeField] private AudioSource audioDamage;
